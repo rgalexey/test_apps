@@ -6,8 +6,12 @@ const express = require('express');
 
 var prometheus = require('appmetrics-prometheus').attach();
 
+require('dotenv').config()
+console.log(`Your port is ${process.env.PORT}`);
+console.log(`NODE_ENV is ${process.env.NODE_ENV}`);
+
 // Constants
-const PORT = 8080;
+const PORT = '8080';
 const HOST = '0.0.0.0';
 
 // App
@@ -19,7 +23,7 @@ app.get('/error*', (req, res) => {
 });
 
 app.get('/*', (req, res) => {
-  res.send('Hello world\n');
+  res.send("Hello there. You are runnig test nodejs app server on ${process.env.PORT} port in ${process.env.NODE_ENV}");
 });
 
 
